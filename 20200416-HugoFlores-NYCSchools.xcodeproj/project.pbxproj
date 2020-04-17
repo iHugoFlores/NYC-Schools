@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F07AD8A52449DD9E008153EE /* SchoolsAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8A42449DD9E008153EE /* SchoolsAPI.m */; };
+		F07AD8A92449DFEB008153EE /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8A82449DFEB008153EE /* School.m */; };
+		F07AD8AC2449E511008153EE /* SATScore.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8AB2449E511008153EE /* SATScore.m */; };
+		F07AD8B2244A0932008153EE /* SchoolTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8B1244A0932008153EE /* SchoolTableCell.m */; };
 		F0A5D76024492E3F009753D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D75F24492E3F009753D8 /* AppDelegate.m */; };
 		F0A5D76324492E3F009753D8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D76224492E3F009753D8 /* SceneDelegate.m */; };
 		F0A5D76624492E3F009753D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D76524492E3F009753D8 /* ViewController.m */; };
@@ -17,6 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F07AD8A32449DD9E008153EE /* SchoolsAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolsAPI.h; sourceTree = "<group>"; };
+		F07AD8A42449DD9E008153EE /* SchoolsAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolsAPI.m; sourceTree = "<group>"; };
+		F07AD8A72449DFEB008153EE /* School.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = School.h; sourceTree = "<group>"; };
+		F07AD8A82449DFEB008153EE /* School.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
+		F07AD8AA2449E511008153EE /* SATScore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SATScore.h; sourceTree = "<group>"; };
+		F07AD8AB2449E511008153EE /* SATScore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SATScore.m; sourceTree = "<group>"; };
+		F07AD8B0244A0932008153EE /* SchoolTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolTableCell.h; sourceTree = "<group>"; };
+		F07AD8B1244A0932008153EE /* SchoolTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolTableCell.m; sourceTree = "<group>"; };
 		F0A5D75B24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20200416-HugoFlores-NYCSchools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5D75E24492E3F009753D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0A5D75F24492E3F009753D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +54,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F07AD8A22449DD23008153EE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F07AD8A32449DD9E008153EE /* SchoolsAPI.h */,
+				F07AD8A42449DD9E008153EE /* SchoolsAPI.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F07AD8A62449DED1008153EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F07AD8A72449DFEB008153EE /* School.h */,
+				F07AD8A82449DFEB008153EE /* School.m */,
+				F07AD8AA2449E511008153EE /* SATScore.h */,
+				F07AD8AB2449E511008153EE /* SATScore.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F07AD8AE244A07E0008153EE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F07AD8AF244A08CE008153EE /* Cells */,
+				F0A5D76424492E3F009753D8 /* ViewController.h */,
+				F0A5D76524492E3F009753D8 /* ViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F07AD8AF244A08CE008153EE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F07AD8B0244A0932008153EE /* SchoolTableCell.h */,
+				F07AD8B1244A0932008153EE /* SchoolTableCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F0A5D75224492E3F009753D8 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +112,13 @@
 		F0A5D75D24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				F07AD8A62449DED1008153EE /* Models */,
+				F07AD8A22449DD23008153EE /* Networking */,
 				F0A5D75E24492E3F009753D8 /* AppDelegate.h */,
 				F0A5D75F24492E3F009753D8 /* AppDelegate.m */,
 				F0A5D76124492E3F009753D8 /* SceneDelegate.h */,
 				F0A5D76224492E3F009753D8 /* SceneDelegate.m */,
-				F0A5D76424492E3F009753D8 /* ViewController.h */,
-				F0A5D76524492E3F009753D8 /* ViewController.m */,
+				F07AD8AE244A07E0008153EE /* Controllers */,
 				F0A5D76724492E3F009753D8 /* Main.storyboard */,
 				F0A5D76A24492E40009753D8 /* Assets.xcassets */,
 				F0A5D76C24492E40009753D8 /* LaunchScreen.storyboard */,
@@ -146,10 +198,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F07AD8A52449DD9E008153EE /* SchoolsAPI.m in Sources */,
 				F0A5D76624492E3F009753D8 /* ViewController.m in Sources */,
 				F0A5D76024492E3F009753D8 /* AppDelegate.m in Sources */,
 				F0A5D77124492E40009753D8 /* main.m in Sources */,
+				F07AD8B2244A0932008153EE /* SchoolTableCell.m in Sources */,
+				F07AD8AC2449E511008153EE /* SATScore.m in Sources */,
 				F0A5D76324492E3F009753D8 /* SceneDelegate.m in Sources */,
+				F07AD8A92449DFEB008153EE /* School.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
