@@ -76,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)   NSString *startTime;
 @property (nonatomic, copy)   NSString *endTime;
 - (void)initWithDictionary: (NSDictionary *) dictionary;
+- (instancetype)initDummy;
 @end
 
 NS_ASSUME_NONNULL_END
