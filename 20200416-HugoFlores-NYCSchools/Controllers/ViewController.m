@@ -9,18 +9,20 @@
 #import "ViewController.h"
 #import "SchoolsAPI.h"
 #import "SchoolTableCell.h"
+#import "SchoolDetailsViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @end
 
 @implementation ViewController
 
-NSMutableArray<School *> *data;
+NSArray<School *> *data;
 UITableView *tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpTableView];
+    self.title = @"NYC Schools";
     data = [NSMutableArray<School *> new];
     [SchoolsAPI getSchoolsWithHandler:^(NSMutableArray<School *> *schools) {
         data = schools;
@@ -32,13 +34,13 @@ UITableView *tableView;
 
 - (void) setUpTableView {
     tableView = [[UITableView alloc] init];
+    tableView.estimatedRowHeight = 600;
     tableView.rowHeight = UITableViewAutomaticDimension;
-    tableView.estimatedRowHeight = 100;
 
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    [tableView registerClass:SchoolTableCell.class forCellReuseIdentifier:@"cell"];
+    [tableView registerClass:[SchoolTableCell class] forCellReuseIdentifier:@"cell"];
 
     tableView.translatesAutoresizingMaskIntoConstraints = false;
     
@@ -51,13 +53,21 @@ UITableView *tableView;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.textLabel.text = [NSString stringWithFormat:@"Number: %ld", (long)indexPath.row];
+    SchoolTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.model = data[indexPath.row];
+    [cell setView];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return data.count;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    SchoolDetailsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SchoolDetails"];
+    vc.model = data[indexPath.row];
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 @end
