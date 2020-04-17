@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SchoolsAPI : NSObject
 + (void)getSchoolsWithHandler: (void(^)(NSMutableArray<School *>*)) handler;
 + (void)getSATScoreForSchool: (void(^)(void)) handler;
++ (NSArray<School *>*)getDummyData;
 @end
 
 NS_ASSUME_NONNULL_END
