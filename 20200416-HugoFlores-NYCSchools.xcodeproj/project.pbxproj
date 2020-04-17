@@ -11,6 +11,7 @@
 		F07AD8A92449DFEB008153EE /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8A82449DFEB008153EE /* School.m */; };
 		F07AD8AC2449E511008153EE /* SATScore.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8AB2449E511008153EE /* SATScore.m */; };
 		F07AD8B2244A0932008153EE /* SchoolTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8B1244A0932008153EE /* SchoolTableCell.m */; };
+		F07AD8B5244A4166008153EE /* SchoolDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07AD8B4244A4166008153EE /* SchoolDetailsViewController.m */; };
 		F0A5D76024492E3F009753D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D75F24492E3F009753D8 /* AppDelegate.m */; };
 		F0A5D76324492E3F009753D8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D76224492E3F009753D8 /* SceneDelegate.m */; };
 		F0A5D76624492E3F009753D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A5D76524492E3F009753D8 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 		F07AD8AB2449E511008153EE /* SATScore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SATScore.m; sourceTree = "<group>"; };
 		F07AD8B0244A0932008153EE /* SchoolTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolTableCell.h; sourceTree = "<group>"; };
 		F07AD8B1244A0932008153EE /* SchoolTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolTableCell.m; sourceTree = "<group>"; };
+		F07AD8B3244A4166008153EE /* SchoolDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolDetailsViewController.h; sourceTree = "<group>"; };
+		F07AD8B4244A4166008153EE /* SchoolDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolDetailsViewController.m; sourceTree = "<group>"; };
 		F0A5D75B24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20200416-HugoFlores-NYCSchools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5D75E24492E3F009753D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0A5D75F24492E3F009753D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,6 +83,8 @@
 				F07AD8AF244A08CE008153EE /* Cells */,
 				F0A5D76424492E3F009753D8 /* ViewController.h */,
 				F0A5D76524492E3F009753D8 /* ViewController.m */,
+				F07AD8B3244A4166008153EE /* SchoolDetailsViewController.h */,
+				F07AD8B4244A4166008153EE /* SchoolDetailsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				F07AD8A52449DD9E008153EE /* SchoolsAPI.m in Sources */,
 				F0A5D76624492E3F009753D8 /* ViewController.m in Sources */,
 				F0A5D76024492E3F009753D8 /* AppDelegate.m in Sources */,
+				F07AD8B5244A4166008153EE /* SchoolDetailsViewController.m in Sources */,
 				F0A5D77124492E40009753D8 /* main.m in Sources */,
 				F07AD8B2244A0932008153EE /* SchoolTableCell.m in Sources */,
 				F07AD8AC2449E511008153EE /* SATScore.m in Sources */,
