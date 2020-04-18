@@ -7,6 +7,7 @@
 //
 
 #import "SchoolDetailsViewController.h"
+#import "SchoolsAPI.h"
 
 @interface SchoolDetailsViewController ()
 
@@ -14,11 +15,21 @@
 
 @implementation SchoolDetailsViewController
 
+UIStackView *mainView;
+
+SATScore *schoolScore;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initObjects];
     [self setUpView];
     [self setData];
+    [SchoolsAPI getSATScoreForSchool:_model.dbn hander:^(SATScore * score) {
+        schoolScore = score;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self setSatScore];
+        });
+    }];
 }
 
 - (void) initObjects {
@@ -55,12 +66,12 @@
     addresView.distribution = UIStackViewDistributionFillProportionally;
     addresView.alignment = UIStackViewAlignmentTrailing;
 
-    UIStackView *mainView = [[UIStackView alloc] initWithArrangedSubviews:@[_schoolNameLabel, addresView, _programsLabel, _descriptionLabel, _description2Label]];
+    mainView = [[UIStackView alloc] initWithArrangedSubviews:@[_schoolNameLabel, addresView, _programsLabel, _descriptionLabel, _description2Label]];
     mainView.translatesAutoresizingMaskIntoConstraints = false;
     mainView.axis = UILayoutConstraintAxisVertical;
-    mainView.spacing = 16;
+    mainView.spacing = 24;
     [mainView setLayoutMarginsRelativeArrangement:true];
-    mainView.layoutMargins = UIEdgeInsetsMake(12, 12, 12, 12);
+    mainView.layoutMargins = UIEdgeInsetsMake(12, 12, 24, 12);
     
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
@@ -90,6 +101,96 @@
     _stateLabel.text = _model.stateCode;
     _cityLabel.text = _model.city;
     _addressLabel.text = _model.primaryAddressLine1;
+}
+
+- (void) setSatScore {
+    CGFloat maxScore = 800;
+
+    UILabel *satTitleLabel = [[UILabel alloc] init];
+    [satTitleLabel setFont:[UIFont fontWithName:@"Avenir-Book" size:30]];
+    satTitleLabel.numberOfLines = 0;
+    satTitleLabel.text = @"SAT Scores";
+    [mainView addArrangedSubview:satTitleLabel];
+    
+    UILabel *satTakersLabel = [[UILabel alloc] init];
+    [satTakersLabel setFont:[UIFont fontWithName:@"Verdana" size:18]];
+    satTakersLabel.numberOfLines = 1;
+    satTakersLabel.text = [NSString stringWithFormat:@"Number of SAT Takers: %@", schoolScore.numOfSatTestTakers];
+    
+    // Reading
+    UILabel *readingLabel =  [[UILabel alloc] init];
+    [readingLabel setFont:[UIFont fontWithName:@"Menlo-Regular" size:12]];
+    readingLabel.numberOfLines = 1;
+    readingLabel.text = [NSString stringWithFormat:@"Critical Reading Avg.: %@ / %.0f", schoolScore.satCriticalReadingAvgScore, maxScore];
+    UIView *readingView =  [[UIView alloc] init];
+    readingView.backgroundColor = [UIColor colorWithDisplayP3Red:0.1 green:0.1 blue:0.3 alpha:0.2];
+    readingView.translatesAutoresizingMaskIntoConstraints = false;
+    UIStackView *readingSView = [[UIStackView alloc] initWithArrangedSubviews:@[readingLabel, readingView]];
+    readingSView.axis = UILayoutConstraintAxisVertical;
+    readingSView.spacing = 6;
+    
+    // Writing
+    UILabel *writingLabel =  [[UILabel alloc] init];
+    [writingLabel setFont:[UIFont fontWithName:@"Menlo-Regular" size:12]];
+    writingLabel.numberOfLines = 1;
+    writingLabel.text = [NSString stringWithFormat:@"Writing Avg.: %@ / %.0f", schoolScore.satWritingAvgScore, maxScore];
+    UIView *writingView = [[UIView alloc] init];
+    writingView.backgroundColor = [UIColor colorWithDisplayP3Red:0.1 green:0.3 blue:0.1 alpha:0.2];
+    writingView.translatesAutoresizingMaskIntoConstraints = false;
+    UIStackView *writingSView = [[UIStackView alloc] initWithArrangedSubviews:@[writingLabel, writingView]];
+    writingSView.axis = UILayoutConstraintAxisVertical;
+    writingSView.spacing = 6;
+    
+    // Math
+    UILabel *mathLabel =  [[UILabel alloc] init];
+    [mathLabel setFont:[UIFont fontWithName:@"Menlo-Regular" size:12]];
+    mathLabel.numberOfLines = 1;
+    mathLabel.text = [NSString stringWithFormat:@"Math Avg.: %@ / %.0f", schoolScore.satMathAvgScore, maxScore];
+    UIView *mathView = [[UIView alloc] init];
+    mathView.backgroundColor = [UIColor colorWithDisplayP3Red:0.3 green:0.1 blue:0.1 alpha:0.2];
+    mathView.translatesAutoresizingMaskIntoConstraints = false;
+    UIStackView *mathSView = [[UIStackView alloc] initWithArrangedSubviews:@[mathLabel, mathView]];
+    mathSView.axis = UILayoutConstraintAxisVertical;
+    mathSView.spacing = 6;
+    
+    UIStackView *satView = [[UIStackView alloc] initWithArrangedSubviews:@[satTakersLabel, readingSView, writingSView, mathSView]];
+    satView.axis = UILayoutConstraintAxisVertical;
+    satView.spacing = 24;
+    satView.distribution = UIStackViewDistributionFillProportionally;
+    [satView setLayoutMarginsRelativeArrangement:true];
+    satView.layoutMargins = UIEdgeInsetsMake(0, 24, 0, 24);
+    
+    [[readingView.heightAnchor constraintEqualToConstant:30] setActive:true];
+    [[writingView.heightAnchor constraintEqualToConstant:30] setActive:true];
+    [[mathView.heightAnchor constraintEqualToConstant:30] setActive:true];
+    
+    [mainView addArrangedSubview:satView];
+    
+    // Set SAT Score Chart
+    UIView *readingScoreView = [[UIView alloc] init];
+    readingScoreView.backgroundColor = [UIColor systemBlueColor];
+    readingScoreView.translatesAutoresizingMaskIntoConstraints = false;
+    UIView *writingScoreView = [[UIView alloc] init];
+    writingScoreView.backgroundColor = [UIColor systemGreenColor];
+    writingScoreView.translatesAutoresizingMaskIntoConstraints = false;
+    UIView *mathScoreView = [[UIView alloc] init];
+    mathScoreView.backgroundColor = [UIColor systemRedColor];
+    mathScoreView.translatesAutoresizingMaskIntoConstraints = false;
+    
+    [readingView addSubview:readingScoreView];
+    [writingView addSubview:writingScoreView];
+    [mathView addSubview:mathScoreView];
+    
+    CGFloat readingScore = [schoolScore.satCriticalReadingAvgScore floatValue];
+    CGFloat writingScore = [schoolScore.satWritingAvgScore floatValue];
+    CGFloat mathScore = [schoolScore.satMathAvgScore floatValue];
+
+    [[readingScoreView.widthAnchor constraintEqualToAnchor:readingView.widthAnchor multiplier:readingScore / maxScore] setActive:true];
+    [[writingScoreView.widthAnchor constraintEqualToAnchor:writingView.widthAnchor multiplier:writingScore / maxScore] setActive:true];
+    [[mathScoreView.widthAnchor constraintEqualToAnchor:mathView.widthAnchor multiplier:mathScore / maxScore] setActive:true];
+    [[readingScoreView.heightAnchor constraintEqualToAnchor:readingView.heightAnchor] setActive:true];
+    [[writingScoreView.heightAnchor constraintEqualToAnchor:writingView.heightAnchor] setActive:true];
+    [[mathScoreView.heightAnchor constraintEqualToAnchor:mathView.heightAnchor] setActive:true];
 }
 
 @end
