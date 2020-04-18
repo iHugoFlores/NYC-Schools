@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "School.h"
+#import "SATScore.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SchoolsAPI : NSObject
 + (void)getSchoolsWithHandler: (void(^)(NSMutableArray<School *>*)) handler;
-+ (void)getSATScoreForSchool: (void(^)(void)) handler;
++ (void)getSATScoreForSchool: (NSString *) schoolId hander: (void(^)(SATScore *)) onDone;
 + (NSArray<School *>*)getDummyData;
 @end
 

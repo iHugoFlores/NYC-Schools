@@ -35,8 +35,26 @@ NSString *satScoresEndpoint = @"https://data.cityofnewyork.us/resource/f9bf-2cp4
     }] resume];
 }
 
-+ (void)getSATScoreForSchool: (void(^)(void)) handler {
-    
++ (void)getSATScoreForSchool: (NSString *) schoolId hander: (void(^)(SATScore *)) onDone {
+    NSURL *url = [NSURL URLWithString:satScoresEndpoint];
+    [[NSURLSession.sharedSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSError *err;
+        NSArray *satDicts = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"Failed to serialize JSON: %@", err);
+            return;
+        }
+
+        for (NSDictionary *satDict in satDicts) {
+            NSString *dbn = satDict[@"dbn"];
+            if ([dbn isEqualToString:schoolId]) {
+                SATScore *new = SATScore.new;
+                [new initWithDictionary:satDict];
+                onDone(new);
+                break;
+            }
+        }
+    }] resume];
 }
 
 + (NSArray<School *>*)getDummyData {
