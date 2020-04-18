@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *satCriticalReadingAvgScore;
 @property (nonatomic, copy) NSString *satMathAvgScore;
 @property (nonatomic, copy) NSString *satWritingAvgScore;
+- (void)initWithDictionary: (NSDictionary *) dictionary;
 @end
 
 NS_ASSUME_NONNULL_END
