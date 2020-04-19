@@ -32,7 +32,7 @@
 		F07AD8B1244A0932008153EE /* SchoolTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolTableCell.m; sourceTree = "<group>"; };
 		F07AD8B3244A4166008153EE /* SchoolDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolDetailsViewController.h; sourceTree = "<group>"; };
 		F07AD8B4244A4166008153EE /* SchoolDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolDetailsViewController.m; sourceTree = "<group>"; };
-		F0A5D75B24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20200416-HugoFlores-NYCSchools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A5D75B24492E3F009753D8 /* NY Schools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NY Schools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0A5D75E24492E3F009753D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0A5D75F24492E3F009753D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F0A5D76124492E3F009753D8 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		F0A5D75C24492E3F009753D8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0A5D75B24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools.app */,
+				F0A5D75B24492E3F009753D8 /* NY Schools.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 			);
 			name = "20200416-HugoFlores-NYCSchools";
 			productName = "20200416-HugoFlores-NYCSchools";
-			productReference = F0A5D75B24492E3F009753D8 /* 20200416-HugoFlores-NYCSchools.app */;
+			productReference = F0A5D75B24492E3F009753D8 /* NY Schools.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -358,7 +358,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.enhanceit.training.hugo.-0200416-HugoFlores-NYCSchools";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NY Schools";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -374,7 +374,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.enhanceit.training.hugo.-0200416-HugoFlores-NYCSchools";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "NY Schools";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
