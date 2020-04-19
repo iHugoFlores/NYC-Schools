@@ -14,6 +14,7 @@
 
 @implementation SceneDelegate
 
+UIView *blankView;
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -33,12 +34,33 @@
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     // Called when the scene has moved from an inactive state to an active state.
     // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    NSLog(@"sceneDidBecomeActive");
+    if (blankView == nil) {
+        blankView = [UIView new];
+        blankView.backgroundColor = [UIColor blackColor];
+        blankView.translatesAutoresizingMaskIntoConstraints = false;
+        blankView.tag = 12;
+        return;
+    }
+    [[self.window viewWithTag:12] removeFromSuperview];
 }
 
 
 - (void)sceneWillResignActive:(UIScene *)scene {
     // Called when the scene will move from an active state to an inactive state.
     // This may occur due to temporary interruptions (ex. an incoming phone call).
+    NSLog(@"Enter background");
+    // Pass NO for the animated parameter. Any animation will not complete
+    // before the snapshot is taken.
+    if ([self.window viewWithTag:12] != nil) {
+        return;
+    }
+    [self.window.rootViewController.view addSubview:blankView];
+    
+    [[blankView.leftAnchor constraintEqualToAnchor: self.window.rootViewController.view.leftAnchor] setActive:true];
+    [[blankView.rightAnchor constraintEqualToAnchor: self.window.rootViewController.view.rightAnchor] setActive:true];
+    [[blankView.topAnchor constraintEqualToAnchor: self.window.rootViewController.view.topAnchor] setActive:true];
+    [[blankView.bottomAnchor constraintEqualToAnchor: self.window.rootViewController.view.bottomAnchor] setActive:true];
 }
 
 
